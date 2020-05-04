@@ -11,6 +11,8 @@ github.com/dc7303/easycodefgo v0.0.0-20200503152945-55b0f124848e h1:M5hqq3sGY2qL
 github.com/dc7303/easycodefgo v0.0.0-20200503152945-55b0f124848e/go.mod h1:FdoqfsaEO1vKNOPyXReYYQJ37kxwkM+IvKz3jGg2/bI=
 github.com/dc7303/easycodefgo v0.0.0-20200503154747-cd4c8dca9a1c h1:/5NNKkarikpPeTfERu2YeK8EAvdEdejooyCqqUfLLX4=
 github.com/dc7303/easycodefgo v0.0.0-20200503154747-cd4c8dca9a1c/go.mod h1:FdoqfsaEO1vKNOPyXReYYQJ37kxwkM+IvKz3jGg2/bI=
+github.com/dc7303/easycodefgo v0.0.0-20200504033423-0c7e0b03d659 h1:7oe+fImoDpHv2gEeFuj8eQ3epI10OcL/i8PGb7KSLsk=
+github.com/dc7303/easycodefgo v0.0.0-20200504033423-0c7e0b03d659/go.mod h1:FdoqfsaEO1vKNOPyXReYYQJ37kxwkM+IvKz3jGg2/bI=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1/go.mod h1:wJfORRmW1u3UXTncJ5qlYoELFm8eSnnEO6hX4iZ3EWY=
 github.com/jtolds/gls v4.20.0+incompatible/go.mod h1:QJZ7F/aHp+rZTRtaJ1ow/lLfFfVYBRgL+9YlvaHOwJU=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
