@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	ecg "github.com/dc7303/easycodefgo"
+	ecg "gitlab.codef.io/codef-io-dev/easycodefgo.git"
 )
 
 const (
