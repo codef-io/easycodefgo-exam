@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"log"
+	"strconv"
 
-	ecg "gitlab.codef.io/codef-io-dev/easycodefgo.git"
+	ecg "github.com/codef-io/easycodefgo"
 )
 
 const (
@@ -20,7 +22,9 @@ const (
 
 func main() {
 	// 코드에프 인스턴스 생성
-	codef := &ecg.Codef{}
+	codef := &ecg.Codef{
+		PublicKey: publicKey,
+	}
 
 	// 데모 클라이언트 정보 설정
 	// - 데모 서비스 가입 후 코드에프 홈페이지에 확인 가능(https://codef.io/#/account/keys)
@@ -35,22 +39,24 @@ func main() {
 	// 요청 파라미터 설정
 	// - 각 상품별 파라미터를 설정(https://developer.codef.io/products)
 	parameter := map[string]interface{}{
-		"organization":    "0004",
-		"userName":        "홍길동",
-		"identity":        "1130000627",
-		"phoneNo":         "01055556666",
+		"organization":    "0001",
+		"userName":        "이름",
+		"identity":        "199101011",
+		"phoneNo":         "01000000000",
 		"telecom":         "0",
 		"timeout":         "120",
 		"authMethod":      "0",
 		"applicationType": "0",
-		"phoneNo1":        "0212345678",
+		"phoneNo1":        "",
 	}
 
 	// 코드에프 정보 조회 요청
 	// - 서비스타입(0:정식, 1:데모, 2:샌드박스)
 	productURL := "/v1/kr/public/ft/do-not-call/set-register" // 공정거래위원회 수신거부 등록/해제 신청 URL
+	serviceType := ecg.TypeSandbox
+
 	// * 정보 조회 요청 메소드 사용
-	result, err := codef.RequestProduct(productURL, ecg.TypeDemo, parameter)
+	result, err := codef.RequestProduct(productURL, serviceType, parameter)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -72,7 +78,7 @@ func main() {
 	setUpTwoWayInfo(parameter, result)
 
 	// 코드에프 추가인증 요청
-	result, err = codef.RequestCertification(productURL, ecg.TypeDemo, parameter)
+	result, err = codef.RequestCertification(productURL, serviceType, parameter)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -93,7 +99,7 @@ func main() {
 	setUpTwoWayInfo(parameter, result)
 
 	// 코드에프 추가인증 요청
-	result, err = codef.RequestCertification(productURL, ecg.TypeDemo, parameter)
+	result, err = codef.RequestCertification(productURL, serviceType, parameter)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -104,17 +110,30 @@ func main() {
 
 func setUpTwoWayInfo(parameter map[string]interface{}, result string) {
 	jsonData := map[string]interface{}{}
-	err := json.Unmarshal([]byte(result), &jsonData)
+	decoder := json.NewDecoder(bytes.NewBuffer([]byte(result)))
+	decoder.UseNumber()
+	if err := decoder.Decode(&jsonData); err != nil {
+		log.Fatalln(err)
+	}
+
+	data := jsonData["data"].(map[string]interface{})
+	jobIndex, err := strconv.ParseUint(string(data["jobIndex"].(json.Number)), 10, 32)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	data := jsonData["data"].(map[string]interface{})
-
+	threadIndex, err := strconv.ParseUint(string(data["threadIndex"].(json.Number)), 10, 32)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	twoWayTimestamp, err := strconv.ParseUint(string(data["twoWayTimestamp"].(json.Number)), 10, 64)
+	if err != nil {
+		log.Fatalln(err)
+	}
 	twoWayInfo := map[string]interface{}{
-		"jobIndex":        data["jobIndex"].(int),
-		"threadIndex":     data["threadIndex"].(int),
+		"jobIndex":        jobIndex,
+		"threadIndex":     threadIndex,
 		"jti":             data["jti"],
-		"twoWayTimestamp": data["twoWayTimestamp"].(int64),
+		"twoWayTimestamp": twoWayTimestamp,
 	}
 
 	parameter["twoWayInfo"] = twoWayInfo

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	ecg "gitlab.codef.io/codef-io-dev/easycodefgo.git"
+	ecg "github.com/codef-io/easycodefgo"
 )
 
 const (
@@ -20,7 +20,9 @@ const (
 
 func main() {
 	// 코드에프 인스턴스 생성
-	codef := &ecg.Codef{}
+	codef := &ecg.Codef{
+		PublicKey: publicKey,
+	}
 
 	// 데모 클라이언트 정보 설정
 	// - 데모 서비스 가입 후 코드에프 홈페이지에 확인 가능(https://codef.io/#/account/keys)
