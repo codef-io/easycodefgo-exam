@@ -34,7 +34,7 @@ func main() {
 	codef.SetClientInfo(clientID, clientSecret)
 
 	// 요청
-	result, err := codef.GetConnectedIDList(ecg.TypeSandbox)
+	result, err := codef.GetConnectedIDList(ecg.TypeSandbox, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
