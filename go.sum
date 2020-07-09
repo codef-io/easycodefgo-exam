@@ -2,6 +2,10 @@ github.com/codef-io/easycodefgo v0.0.0-20200707040200-7711747a9168 h1:nc95xNcfHk
 github.com/codef-io/easycodefgo v0.0.0-20200707040200-7711747a9168/go.mod h1:5VKvHEjOuYVgy70C8hvgHDcV4N4rslEKBaUlQxBytIc=
 github.com/codef-io/easycodefgo v1.0.1 h1:EfYCzDzRfxjVSG69zMukltUlU5H92NIjGs7C08iS5As=
 github.com/codef-io/easycodefgo v1.0.1/go.mod h1:5VKvHEjOuYVgy70C8hvgHDcV4N4rslEKBaUlQxBytIc=
+github.com/codef-io/easycodefgo v1.0.2-0.20200709072048-8fdb09e30a4f h1:UA+bv3KocI8HikLDUP/n6vjK7L6W+QHafh/7QVCzMBQ=
+github.com/codef-io/easycodefgo v1.0.2-0.20200709072048-8fdb09e30a4f/go.mod h1:5VKvHEjOuYVgy70C8hvgHDcV4N4rslEKBaUlQxBytIc=
+github.com/codef-io/easycodefgo v1.0.2 h1:qSqOyZlKrETj3KEvg74Iunq7uGxIXLMkSD4hTRzucsE=
+github.com/codef-io/easycodefgo v1.0.2/go.mod h1:5VKvHEjOuYVgy70C8hvgHDcV4N4rslEKBaUlQxBytIc=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/gopherjs/gopherjs v0.0.0-20181017120253-0766667cb4d1 h1:EGx4pi6eqNxGaHF6qqu48+N2wcFQ5qg5FXgOdqsJ5d8=
