@@ -40,7 +40,7 @@ func main() {
 	}
 
 	// 요청
-	result, err := codef.DeleteAccount(ecg.TypeSandbox, parameter)
+	result, err := codef.GetAccountList(ecg.TypeSandbox, parameter)
 	if err != nil {
 		log.Fatalln(err)
 	}

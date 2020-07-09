@@ -46,7 +46,7 @@ func main() {
 		"loginType":    "0",
 	}
 
-	pwd, err := ecg.EncryptRSA("password", publicKey)
+	pwd, err := ecg.EncryptRSA("password", codef.PublicKey)
 	if err != nil {
 		log.Fatalln(err)
 	}

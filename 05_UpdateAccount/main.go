@@ -44,7 +44,7 @@ func main() {
 		"loginType":    "0",
 	}
 
-	pwd, err := ecg.EncryptRSA("password", publicKey)
+	pwd, err := ecg.EncryptRSA("password", codef.PublicKey)
 	if err != nil {
 		log.Fatalln(err)
 	}
@@ -64,6 +64,7 @@ func main() {
 	account["derFile"] = certFile
 	account["keyFile"] = keyFile
 
+	accountList = append(accountList, account)
 	parameter := map[string]interface{}{
 		"accountList": accountList,
 		"connectedId": "8PQI4dQ......hKLhTnZ",

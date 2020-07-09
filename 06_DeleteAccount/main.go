@@ -41,8 +41,28 @@ func main() {
 		"businessType": "BK",
 		"clientType":   "P",
 		"organization": "0004",
-		"loginType":    "1",
+		"loginType":    "0",
 	}
+
+	pwd, err := ecg.EncryptRSA("password", codef.PublicKey)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	account["password"] = pwd
+
+	// 인증서 정보 가져오기
+	certFile, err := ecg.EncodeToFileString("CERT_FILE_PATH")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	keyFile, err := ecg.EncodeToFileString("KEY_FILE_PATH")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	// 인증서 정보 셋팅
+	account["derFile"] = certFile
+	account["keyFile"] = keyFile
 
 	accountList = append(accountList, account)
 	parameter := map[string]interface{}{

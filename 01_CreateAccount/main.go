@@ -47,11 +47,12 @@ func main() {
 		"id":           "user_id",
 	}
 
-	pwd, err := ecg.EncryptRSA("password", publicKey)
+	pwd, err := ecg.EncryptRSA("password", codef.PublicKey)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	account["password"] = pwd
+
 	accountList = append(accountList, account)
 	parameter := map[string]interface{}{
 		"accountList": accountList,
