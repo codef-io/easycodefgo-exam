@@ -38,12 +38,12 @@ func main() {
 	parameter := map[string]interface{}{
 		"connectedId":  "8PQI4dQ......hKLhTnZ",
 		"organization": "0004",
-		"identity":     "1130000627",
 	}
 
 	// 코드에프 정보 조회 요청
 	// - 서비스타입(0:정식, 1:데모, 2:샌드박스)
-	productURL := "/v1/kr/card/b/account/card-list" // 법인 보유카드 조회 URL
+	// 개인 보유계좌 조회 (https://developer.codef.io/products/bank/common/p/account)
+	productURL := "/v1/kr/bank/p/account/account-list"
 	result, err := codef.RequestProduct(productURL, ecg.TypeSandbox, parameter)
 	if err != nil {
 		log.Fatalln(err)
